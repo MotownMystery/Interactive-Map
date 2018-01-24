@@ -1,0 +1,176 @@
+/* navigation */
+
+.main-banner__nav {
+    position: relative;
+    width: auto;
+}
+
+.main-banner__header {
+    width: 1000px;
+}
+
+.btn {
+    background: lighten(#333, 10%);
+    display: inline-block;
+    padding: 20px 20px;
+    color: #fff;
+    font-size: 12px;
+    border-radius: 5px;
+    margin: 0 10px;
+    font-family: 'Comfortaa', cursive;
+
+}
+
+.main-banner__nav__title {
+    margin-top: 10px;
+    padding: 15px 0;
+    border: 3px solid lightgrey;
+    border-radius: 10px;
+    box-shadow: 3px 2px 5px lightgrey;
+    width: 600px;
+    text-align: center;
+    font-size: 25px;
+    background: #fff;
+    font-family: 'Comfortaa', cursive;
+    position: relative;
+}
+
+
+.main-banner__header:hover .main-banner__nav label:before {
+    content: "Start with a capital letter";
+    height: auto;
+    padding: 10px 10px;
+    border-radius: 5px;
+    border: 1px solid grey;
+    color: #333;
+    background: #fff;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    z-index: 1;
+    transition: 1s all;
+}
+
+
+/* main banner */
+
+.main-banner__map{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.firstMap {
+    width: 1050px;
+    height: 750px;
+    transform: scale(1.2);
+    margin-top: 110px;
+}
+
+.second-page__box__map {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+.secondMap {
+    width: 1050px;
+    height: 750px;
+    transform: scale(0.7);
+
+}
+
+svg g {
+    width: 100%;
+}
+
+.main-banner__header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+
+}
+
+
+.main-banner__toolTip {
+    width: 150px;
+    height: auto;
+    border-radius: 10px;
+    font-size: 16px;
+    text-align: center;
+    position: absolute;
+    top:0;
+    left: 0;
+    background: rgb(166, 166, 180);
+    color: black;
+    display: none;
+    z-index: 1;
+
+}
+
+.tips {
+    width: 1000px;
+    padding: 10px;
+    margin-top: 80px;
+    background: #fff;
+    border: 1px solid grey;
+    border-radius: 3px;
+    position: absolute;
+    top: 80%;
+    display: flex;
+    flex-wrap: wrap;
+    list-style: none;
+    z-index: 2;
+}
+
+.tips:before {
+    content: '';
+    width: 20px;
+    height: 20px;
+    border-top: 1px solid grey;
+    border-left: 1px solid grey;
+    z-index: 2;
+    background: #fff;
+    transform: rotate(45deg);
+    position: absolute;
+    top: -11px;
+    left: 50%;
+}
+
+.tipsElement {
+   padding: 5px;
+   margin-left: 5px;
+   color: rgb(36, 27, 33);
+   cursor: pointer;
+}
+
+
+//panel logowania userBox
+.main-banner__userBox {
+    display: flex;
+    justify-content: flex-end;
+}
+
+
+.main-banner__userBox li{
+    display: inline-block;
+    padding: 0 10px;
+    margin: 0 5px;
+        a {
+        text-decoration: none;
+        color: #333;
+        cursor: pointer;
+            &:hover{
+            color: red;
+            }
+        }
+}
+
+//formularz
+
+.main-banner__form{
+    display: none;
+    position: absolute;
+    top: 40px;
+}

@@ -1,0 +1,33 @@
+.list {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.list__box {
+    display: none;
+    background: rgba(240, 221, 221, 0.5);
+    box-shadow: 5px 5px 20px grey;
+    width: 95%;
+    height: 600px;
+    position: absolute;
+    top: 100%;
+    opacity: 0;
+    transition: 1s all; 
+    margin-bottom: 30px;
+}
+
+.list__box__title {
+    text-transform: uppercase;
+}
+.list__box--visited,
+.list__box--wish {
+  
+}
+
+.second-page__box--exit{
+    position: absolute;
+    top: 0;
+    left: 96%;
+}

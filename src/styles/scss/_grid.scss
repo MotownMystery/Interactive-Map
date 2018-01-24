@@ -1,0 +1,40 @@
+$column: 12;
+$gap: 10px;
+$breakpoint: 720px;
+
+.container {
+    padding-left:$gap;
+    padding-right:$gap;
+    margin: 0 auto;
+    width: 100%;
+    max-width: 1100px;
+}
+.row {
+    margin-left:-$gap;
+    margin-right:-$gap;
+
+    &:after {
+        content:'';
+        display: table;
+        clear:both;
+    }
+
+    [class*="col-"] {
+        width:100%;
+        padding:0 $gap;
+        box-sizing:border-box;
+        margin-bottom: 2*$gap;
+    }
+
+    @media (min-width:#{$breakpoint}) {
+        [class*="col-"] {
+            float:left;
+        }
+
+        @for $i from 1 through $column {
+            .col-#{$i}-#{$column} {
+                width: ((100/$column)*$i)*1%;
+            }
+        }
+    }
+}
