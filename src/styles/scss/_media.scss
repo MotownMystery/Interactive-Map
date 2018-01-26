@@ -1,0 +1,142 @@
+$smallphones: 320px;
+$smartphones: 768px;
+$tablets: 1024px;
+$desktops: 1224px;
+
+
+// .firstMap {
+//     min-width: 1050px;
+//     height: 750px;
+//     transform: scale(1.2);
+//     margin-top: 110px;
+// }
+
+//large map
+
+@media screen and (min-width: $smallphones){
+    .firstMap {
+        transform: scale(0.36);
+        margin-top: 0;
+        margin-left: 40px; 
+    }
+    .main-banner__nav__title {
+        height: 10px;
+    }
+
+    .btn {
+        margin-top: 10px;
+    }
+}
+
+@media screen and (min-width: $smartphones){
+    .firstMap {
+        transform: scale(0.7);
+        margin-top: 100px;  
+    }
+
+    .main-banner__map{
+        max-height: 700px;
+    }
+
+    .main-banner__nav {
+        width: auto;
+        flex-direction: row;
+        margin-top: 20px;
+        margin-bottom: 30px;
+    }
+
+    .main-banner__nav__title {
+        height: 20px;
+    }
+
+    .btn {
+        padding: 15px 10px;
+    }
+    .main-banner__header {
+        margin: 0 auto;
+    }
+
+
+}
+
+@media screen and (min-width: $tablets){
+    .firstMap {
+        transform: scale(0.9);
+    }
+
+    .main-banner__map{
+        max-height: 900px;
+    }
+
+    .main-banner {
+        display: flex;
+        align-items: flex-end;
+    }
+
+    .main-banner__nav__title {
+        height: 30px;
+    }
+
+    .btn {
+        padding: 20px 10px;
+    }
+
+
+}
+
+@media screen and (min-width: $desktops){
+    .firstMap {
+        transform: scale(1.2);
+    }
+
+    .main-banner__map{
+        max-height: 1200px;
+    }
+    .main-banner__nav__title {
+        width: 1000px;
+    }
+
+
+}
+
+
+// small map
+
+// .secondMap {
+//     min-width: 1050px;
+//     height: 750px;
+//     transform: scale(0.7);
+
+// }
+
+@media screen and (min-width: $smartphones){
+    .secondMap {
+        transform: scale(0.5);
+    }
+}
+
+@media screen and (min-width: $tablets){
+    .secondMap {
+        transform: scale(0.6);
+    }
+}
+
+@media screen and (min-width: $desktops){
+    .secondMap {
+        transform: scale(0.7);
+    }
+}
+
+// header
+
+// .main-banner__header {
+//     display: flex;
+//     justify-content: center;
+//     align-items: center;
+//     position: relative;
+//     // min-width: 1000px;
+//     width: 100%;
+
+// }
+
+
