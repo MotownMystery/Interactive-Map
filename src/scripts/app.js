@@ -10,10 +10,10 @@ document.addEventListener("DOMContentLoaded", function(){
             storageBucket: "interactive-map-f5060.appspot.com",
             messagingSenderId: "595861650630"
           };
-          firebase.initializeApp(config);
-          const database = firebase.database();
+        firebase.initializeApp(config);
+        const database = firebase.database();
     
-              //elementy do logowania
+        //elementy do logowania
         const logIn = document.getElementById("logIn");
         const signIn = document.getElementById("signIn");
         const logOut = document.getElementById("logOut");
@@ -22,7 +22,7 @@ document.addEventListener("DOMContentLoaded", function(){
         const form = document.getElementById("signInForm");
         const array = [];
        
-          //pokaz formularz do logowania
+        //pokaz formularz do logowania
       
         // logOut.classList.add("hide");
         logIn.addEventListener("click", e =>{
@@ -113,11 +113,13 @@ document.addEventListener("DOMContentLoaded", function(){
         let addVisitedBtn = visitBtn.previousElementSibling;
     
     
-    
-    
-    
-    
-    
+        //funkcja chowająca element 
+        function hideElement(element){
+            
+        element.className = "hide";
+              
+        }
+
     
         // tablica obiektow kraje id i nazwy
         let countries = []
@@ -137,20 +139,16 @@ document.addEventListener("DOMContentLoaded", function(){
             smallMap.forEach(country => {
                 if(typeof country !== ''){
                     smallCountries.push({id: country.id, title: country.getAttribute("title")});
+
                     return smallCountries;
                 }
-               
-                
+                 
         })
-    
-    
     
         //pozycja kursora
         window.onmousemove = mousePosition;
         function mousePosition(e){
-    
             return { x: e.clientX, y: e.clientY };  
-            
         }  
     
         //najechanie na mape i podswietlenie
@@ -168,7 +166,6 @@ document.addEventListener("DOMContentLoaded", function(){
             })
     
             country.addEventListener("mouseleave", function(){
-            
                 this.classList.remove("visibleCountry");
                 toolTip.style.display = "none";
                 
@@ -180,9 +177,11 @@ document.addEventListener("DOMContentLoaded", function(){
         //widocznosc sekcji
     
         function showSection(section, positionTop){
-            section.style.display = 'block';
-            section.style.opacity = '1';
-            section.style.top = positionTop;
+
+            section.style.display = "block";
+            // section.style.display = 'block';
+            // section.style.opacity = '1';
+            // section.style.top = positionTop;
             
             // section.style.transform = 'translate(-50%,-50%)';
     
@@ -190,11 +189,10 @@ document.addEventListener("DOMContentLoaded", function(){
     
        
         //pobranie inputa i podswietlenie mapy
-        
     
         function viewCountry(event, name){
             event.preventDefault();
-            hideTableTips(list);
+            hideElement(list);
             showSection(sectionSec, '0');
             connectToCountries(countries);
             countryMap.forEach(country => {
@@ -218,8 +216,7 @@ document.addEventListener("DOMContentLoaded", function(){
         
         btn.addEventListener("click", () => viewCountry(event, title));
       
-    
-    
+
     
         // dodawanie li do list info i weather
         function addItemToWeatherList(parent, item, text){
@@ -237,8 +234,7 @@ document.addEventListener("DOMContentLoaded", function(){
             parent.appendChild(newLi);
         
     
-       
-    // podlaczenie do api pogody i dodanie elementow do boxWeather
+            // podlaczenie do api pogody i dodanie elementow do boxWeather
             function showWeather(){
                 country.map(el => {
                    if(el.name === item){
@@ -305,13 +301,13 @@ document.addEventListener("DOMContentLoaded", function(){
         }
     
     
-                   // funkcja scroll to danej sekcji
-                   function scrollIt(element) {
-                    window.scrollTo({
-                    'behavior': 'smooth',
-                    'top': element.offsetTop
-                    });
-                }
+        // funkcja scroll to danej sekcji
+        function scrollIt(element) {
+            window.scrollTo({
+                'behavior': 'smooth',
+                'top': element.offsetTop
+            });
+        }
     
     
         //podlaczenie sie do api countries i pobranie danych + dolaczenie do listy
@@ -349,14 +345,9 @@ document.addEventListener("DOMContentLoaded", function(){
                         let leftBox = document.querySelector("#leftBox");
                         leftBox.style.backgroundImage = `url(${item.flag})`;
                         leftBox.classList.add("leftBoxBackground");
-                        // let box = document.querySelector(".second-page__list");
-                        // let img = document.createElement("img");
-                        // img.setAttribute("src", item.flag);
-                        // img.classList.add("flags");
-                        // box.appendChild(img);
-                         
-                    }
-                    return arr
+
+                        return arr; 
+                    }  
                 })  
                 }).catch(error => {
                     console.log('fail', error);
@@ -366,61 +357,46 @@ document.addEventListener("DOMContentLoaded", function(){
     
     
         // btn tips wyswietla tablice z nazwami krajów i chowa
+        function createTableTips(){     
+            list.classList.add("tips");
+            let arrayOfLi = [];
+            const tipsArray = countries.map(el => {
+                let newLi = document.createElement("li");
+                newLi.classList.add("tipsElement");
+                list.appendChild(newLi);
+                newLi.innerText = el.title;
+                header.appendChild(list); 
     
-            function createTableTips(){     
-                list.classList.add("tips");
-                let arrayOfLi = [];
-                const tipsArray = countries.map(el => {
-                    let newLi = document.createElement("li");
-                    newLi.classList.add("tipsElement");
-                    list.appendChild(newLi);
-                    newLi.innerText = el.title;
-                    header.appendChild(list); 
-                    
-                    
-                    arrayOfLi.push(newLi);
-                    return arrayOfLi;
-                })
-    
-                arrayOfLi.forEach(el =>{
-                    el.addEventListener("click",function(){
-                        
-                        let text = this.innerText;
-                        title.value = text;
-                    })
-                })
-    
-                return tipsArray;
-    
-             
-            }
-    
-            tips.addEventListener("click",function(){
-                if(list.getAttribute("class") !== "tips"){
-                    createTableTips()
-                } else {
-                    hideTableTips();
-                    tips.setAttribute("disabled", "true");
-                }
-            
+                arrayOfLi.push(newLi);
+                return arrayOfLi;
             })
-            
     
-            function hideTableTips(){
-                
-                list.style.display = "none"
-                
-             
+            arrayOfLi.forEach(el =>{
+                el.addEventListener("click",function(){
+                    let text = this.innerText;
+                    title.value = text;
+                })
+            })
+    
+            return tipsArray;
+       
+        }
+
+        //po kliknięciu na btn pokazanie tablicy tips i wyłączenie guzika
+        tips.addEventListener("click",function(){
+            if(list.getAttribute("class") !== "tips"){
+                createTableTips()
+            } else {
+                hideElement(list);
+                tips.setAttribute("disabled", "true");
             }
-    
-    
+            
+        })
+            
+
         //wyjście z drugiej sekcji
     
-        exit.addEventListener("click", function(){
-       
-            sectionSec.style.display = "none";
-           
-        })
+        exit.addEventListener("click", () => hideElement(sectionSec));
     
     
     
@@ -432,9 +408,7 @@ document.addEventListener("DOMContentLoaded", function(){
         //     scrollIt(listSection);
         // });
     
-        document.querySelector("#exitList").addEventListener("click", function(){
-            listSection.style.display = "none";
-        })
+        document.querySelector("#exitList").addEventListener("click", () => hideElement(listSection));
     
     
         // dodanie do listy życzeń
