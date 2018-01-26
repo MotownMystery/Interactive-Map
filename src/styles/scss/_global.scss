@@ -5,6 +5,20 @@ body {
 }
 
 
+.btn {
+    background: lighten(#333, 10%);
+    display: inline-block;
+    padding: 10px 5px;
+    width: 100px;
+    color: #fff;
+    font-size: 12px;
+    border-radius: 5px;
+    margin: 0 10px;
+    font-family: 'Comfortaa', cursive;
+
+}
+
+
 .land
 {
     fill: lighten(#333, 10%);
