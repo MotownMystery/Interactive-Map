@@ -92,13 +92,13 @@ document.addEventListener("DOMContentLoaded", function(){
     
     
         let list = header.querySelector("ul");
-        let sectionSec = document.querySelector("#aboveSec");
+        let sectionSec = document.querySelector("#secondSec");
         let apiKeyWet = 'f4779c85f173bc69a529ddd3ab6e9770';
         let apiKeyTime = 'ALQA70H88TB7';
         let exit = document.querySelector("#exitBtn");
        
         let boxWeather = document.querySelector("#weatherBox");
-        let countryInfo = document.querySelector("#countryList");
+        // let countryInfo = document.querySelector("#countryList");
         let sun = document.querySelector("#sun");
         let moon = document.querySelector("#moon");
         let littleMoon = document.querySelector("#littleMoon");
@@ -177,14 +177,11 @@ document.addEventListener("DOMContentLoaded", function(){
         //widocznosc sekcji
     
         function showSection(section, positionTop){
-
-            section.style.display = "block";
             // section.style.display = 'block';
-            // section.style.opacity = '1';
-            // section.style.top = positionTop;
-            
+            section.style.opacity = '1';
+            section.style.top = positionTop;
+          
             // section.style.transform = 'translate(-50%,-50%)';
-    
         }
     
        
@@ -193,7 +190,7 @@ document.addEventListener("DOMContentLoaded", function(){
         function viewCountry(event, name){
             event.preventDefault();
             hideElement(list);
-            showSection(sectionSec, '0');
+            showSection(sectionSec, '10%');
             connectToCountries(countries);
             countryMap.forEach(country => {
                 let attr = country.getAttribute("title");
@@ -336,6 +333,13 @@ document.addEventListener("DOMContentLoaded", function(){
                     let listOfCountry = document.querySelector("#countryList");
     
                     if(title.value === name){
+                        // let itemsList = (`
+                        //     <li>${name}</li>
+                        //     <li>${capital}</li>
+                        //     <li>${currency}</li>
+                        //     <li>${language}</li>
+                        //     <li>${population}</li>
+                        // `)
                         addItemToList(listOfCountry, name, 'Name of the country: ', countries);
                         addItemToList(listOfCountry, capital, 'Capital: ', countries);
                         addItemToList(listOfCountry, currency, 'Currency: ', countries);
@@ -345,9 +349,11 @@ document.addEventListener("DOMContentLoaded", function(){
                         let leftBox = document.querySelector("#leftBox");
                         leftBox.style.backgroundImage = `url(${item.flag})`;
                         leftBox.classList.add("leftBoxBackground");
-
+                        // countryInfo.append(itemsList);
+                        
                         return arr; 
                     }  
+                    
                 })  
                 }).catch(error => {
                     console.log('fail', error);
