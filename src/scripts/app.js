@@ -96,7 +96,7 @@ document.addEventListener("DOMContentLoaded", function(){
         let apiKeyWet = 'f4779c85f173bc69a529ddd3ab6e9770';
         let apiKeyTime = 'ALQA70H88TB7';
         let exit = document.querySelector("#exitBtn");
-       
+ 
         let boxWeather = document.querySelector("#weatherBox");
         // let countryInfo = document.querySelector("#countryList");
         let sun = document.querySelector("#sun");
@@ -113,12 +113,6 @@ document.addEventListener("DOMContentLoaded", function(){
         let addVisitedBtn = visitBtn.previousElementSibling;
     
     
-        //funkcja chowająca element 
-        function hideElement(element){
-            
-        element.className = "hide";
-              
-        }
 
     
         // tablica obiektow kraje id i nazwy
@@ -177,20 +171,23 @@ document.addEventListener("DOMContentLoaded", function(){
         //widocznosc sekcji
     
         function showSection(section, positionTop){
-            // section.style.display = 'block';
+            section.style.display = 'block';
             section.style.opacity = '1';
             section.style.top = positionTop;
-          
-            // section.style.transform = 'translate(-50%,-50%)';
         }
     
+        //funkcja chowająca element 
+        function hideElement(element){
+            element.style.display = 'none';
+        }
+        
        
         //pobranie inputa i podswietlenie mapy
     
         function viewCountry(event, name){
             event.preventDefault();
             hideElement(list);
-            showSection(sectionSec, '10%');
+            showSection(sectionSec, '20%');
             connectToCountries(countries);
             countryMap.forEach(country => {
                 let attr = country.getAttribute("title");
@@ -211,8 +208,15 @@ document.addEventListener("DOMContentLoaded", function(){
          
         }
         
+        // zdarzenie na btn search
         btn.addEventListener("click", () => viewCountry(event, title));
-      
+
+        // zdarzenie na enter
+        title.addEventListener("keyup", function(e){
+            if(e.keyCode === 13){
+                viewCountry(event, title);
+            }
+        })
 
     
         // dodawanie li do list info i weather
@@ -238,7 +242,7 @@ document.addEventListener("DOMContentLoaded", function(){
                     fetch(`http://api.apixu.com/v1/current.json?key=38d2497fd3b242e78fb182314181601&q=${el.capital}`)
                         .then(res => res.json())
                         .then(data => {
-                       
+                            console.log(data);
                             const { location, current } = data;
            
                             let header = document.querySelector("#titleWeather");
@@ -286,18 +290,16 @@ document.addEventListener("DOMContentLoaded", function(){
             // po kliknięciu pokazuje sie okno z pogodą
             button.addEventListener('click', () => {
                 showWeather();
+                boxWeather.style.display = "block";
                 boxWeather.style.opacity = "1";
                 button.innerText = "Hide weather";
                 button.setAttribute("disabled", "true");
                 scrollIt(boxWeather)
     
             });
-       
-    
     
         }
-    
-    
+
         // funkcja scroll to danej sekcji
         function scrollIt(element) {
             window.scrollTo({
@@ -333,13 +335,6 @@ document.addEventListener("DOMContentLoaded", function(){
                     let listOfCountry = document.querySelector("#countryList");
     
                     if(title.value === name){
-                        // let itemsList = (`
-                        //     <li>${name}</li>
-                        //     <li>${capital}</li>
-                        //     <li>${currency}</li>
-                        //     <li>${language}</li>
-                        //     <li>${population}</li>
-                        // `)
                         addItemToList(listOfCountry, name, 'Name of the country: ', countries);
                         addItemToList(listOfCountry, capital, 'Capital: ', countries);
                         addItemToList(listOfCountry, currency, 'Currency: ', countries);
@@ -349,7 +344,6 @@ document.addEventListener("DOMContentLoaded", function(){
                         let leftBox = document.querySelector("#leftBox");
                         leftBox.style.backgroundImage = `url(${item.flag})`;
                         leftBox.classList.add("leftBoxBackground");
-                        // countryInfo.append(itemsList);
                         
                         return arr; 
                     }  

@@ -86,7 +86,7 @@ $desktops: 1224px;
 
 @media screen and (min-width: $desktops){
     .firstMap {
-        transform: scale(1.2);
+        transform: scale(1.15);
     }
 
     .main-banner__map{
@@ -111,8 +111,9 @@ $desktops: 1224px;
 
 @media screen and (min-width: $smartphones){
     .secondMap {
-        transform: scale(0.5);
+        transform: scale(0.4);
     }
+
 }
 
 @media screen and (min-width: $tablets){
@@ -151,34 +152,57 @@ $desktops: 1224px;
 // }
 
 
-@media screen and (min-width: $smallphones){
+
+@media screen and (min-width: $smartphones){
+    .second-page {
+        margin-top: 50px;
+    }
+
     .second-page__list--weather {
-       width: 200px;
-       height: 200px;
-       top: 90%;
-       left: 20%;
+        width: 350px;
+        height: 350px;
+        padding: 20px;
+        top: 90%;
+        left: 20%;
     }
-
-    .elRightList {
-        font-size: 12px;
-        padding: 5px;
-    }
-    .second-page__list--sun{
-       opacity: 0;
-    }
-
     .second-page__title--small{
+        font-size: 20px;
+    }
+    .elRightList {
         font-size: 15px;
+        padding: 10px;
+    }
+
+}
+@media screen and (min-width: $tablets){
+    .second-page {
+        margin-top: 0;
+    }
+    .second-page__list--weather {
+        transform: scale(0.6);
+    }
+    .second-page__list--weather {
+        width: 600px;
+        height: 600px;
+        top: 60%;
+        left: 30%;
+     }
+     .second-page__title--small{
+        font-size: 30px;
+        margin-top: 50px;
     }
 
     .time {
-        font-size: 14px;
+        font-size: 25px;
     }
-}
+    .elRightList {
+        font-size: 26px;
+        padding: 10px;
+    }
 
-@media screen and (min-width: $tablets){
-    .second-page__list--weather {
-        transform: scale(0.6);
+    .icon {
+        width: 100px;
+        height: 100px;
     }
 }
 
