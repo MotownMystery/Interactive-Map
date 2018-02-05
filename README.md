@@ -1,5 +1,6 @@
 # Interactive-Map
 
+
 What you can do with an Interactive-Map:
 
 - check where the country you are looking for is situated
@@ -12,6 +13,9 @@ This project is still on progress, my goal is to:
 - make the website responsive, 
 - allow to log in, 
 - save data (whish list, visited list) 
+
+
+You can check the map on: https://newgirll.github.io/Interactive-Map/
 
 Technology used in the project:
 
