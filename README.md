@@ -15,8 +15,6 @@ This project is still on progress, my goal is to:
 - save data (whish list, visited list) 
 
 
-You can check the map on: https://newgirll.github.io/Interactive-Map/
-
 Technology used in the project:
 
 - CSS/Sass
