@@ -9,7 +9,7 @@ class Lists extends MapSetup{
         this.visitBtn = document.querySelector("#addToVisit");
         this.addVisitedBtn = this.visitBtn.previousElementSibling;
         this.btnListExit = document.querySelector("#exitList");
-        this.listEl = this.listOfCountry.children;
+ 
       
 
         this.btnListExit.addEventListener("click", () => this.hideElement(this.listSection));

@@ -14,10 +14,11 @@ class Map extends MapSetup {
 
         })
 
-        this.btnSearch.addEventListener("click", e =>{
-            this.viewCountry(event);
-            this.turnOffSearchBtn();
-        })
+        if(this.sectionSec.style.display !== "none"){
+            this.title.addEventListener("input", ()=>{
+                // this.resetListElements(this.listSpans)
+            })
+        }
 
         this.exit = document.querySelector("#exitBtn");
         this.exit.addEventListener("click", () => {
@@ -34,11 +35,13 @@ class Map extends MapSetup {
                 e.preventDefault();
                 this.hideElement(this.list);
                 this.selectCountries(this.attribute);
-                this.showSection(this.sectionSec,'20%');
+                this.showSection(this.sectionSec,'5%');
                 this.viewCountry(event, this.countryMap, this.smallMap, this.title.value, this.attribute);
 
             })
         })
+
+
 
     }
     
@@ -52,18 +55,18 @@ class Map extends MapSetup {
                 if(this.title.value === country.name || attr === country.name){
                     const {languages, currencies} = country;
                    
-                    this.addItemToList(this.listOfCountry, country.name, 'Name of the country: ');
-                    this.addItemToList(this.listOfCountry, country.capital, 'Capital: ');
+                    this.addItemToList(this.listEl[0], country.name);
+                    this.addItemToList(this.listEl[1], country.capital);
 
                     [...currencies].forEach(currency=>{
-                        this.addItemToList(this.listOfCountry, currency.name, 'Currency: ');
+                        this.addItemToList(this.listEl[2], currency.name);
                     });
   
                     [...languages].forEach(language =>{
-                        this.addItemToList(this.listOfCountry, language.name, 'Language: ');
+                        this.addItemToList(this.listEl[3], language.name);
                     });
                   
-                    this.addItemToList(this.listOfCountry, country.population, 'Population: ');
+                    this.addItemToList(this.listEl[4], country.population);
                         
                     this.leftBox.style.backgroundImage = `url(${country.flag})`;
                     this.leftBox.classList.add("leftBoxBackground");
@@ -76,7 +79,7 @@ class Map extends MapSetup {
         e.preventDefault();
         this.hideElement(this.list);
         this.selectCountries();
-        this.showSection(this.sectionSec,'20%');
+        this.showSection(this.sectionSec,'5%');
         super.viewCountry(event, this.countryMap, this.smallMap, this.title.value, this.attribute)        
     }
 
@@ -88,6 +91,12 @@ class Map extends MapSetup {
         }
     }
 
+    resetListElements(element){
+        [...element].forEach(el=>{
+            el.innerText = " "
+        })
+
+    }
 }
 
 export { Map };

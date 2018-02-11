@@ -19,7 +19,7 @@ import {FireBase} from './FireBase'
     const bigMap = new Map();
     bigMap.blinkMap();
     bigMap.selectCountries()
- 
+    console.log(bigMap);
 
 
     const toolTip = new ToolTips();

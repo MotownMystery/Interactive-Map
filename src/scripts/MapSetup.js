@@ -4,6 +4,8 @@ class MapSetup {
         this.countryMap = document.querySelector("#map").children;
         this.smallMap = document.querySelector("#mapSec").children;
         this.listOfCountry = document.querySelector("#countryList");
+        this.listEl = this.listOfCountry.children;
+        this.listSpans = document.querySelectorAll('.countryInfo');
         this.title = document.querySelector("#countryName");
         this.toolTip = document.querySelector("#toolTip");
         this.header = document.querySelector("#header");
@@ -86,11 +88,11 @@ class MapSetup {
         })
     }
 
-    addItemToList(parent, item, text){
-        let newLi = document.createElement("li");
-        newLi.classList.add("elInfo");
-        newLi.innerText = text + item;
-        parent.appendChild(newLi);
+    addItemToList(parent, item){
+        let newSpan = document.createElement("span");
+        newSpan.classList.add("countryInfo");
+        newSpan.innerText = item;
+        parent.appendChild(newSpan);
     }
     
     viewCountry(e, countriesArrayOne, countriesArrayTwo, input, clickedCountry){
