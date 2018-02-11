@@ -1,4 +1,4 @@
-//         //firebase interactive-map
+// firebase interactive-map
 
 class FireBase {
     constructor(){
@@ -28,12 +28,10 @@ class FireBase {
             document.getElementById('logInForm').style.display = "block";
            
         });
+        // this.logOut.classList.add("hide");
 
-            // logOut.classList.add("hide");
 
-    
         //wylogowanie sie uzytkownika
-    
         this.logOut.addEventListener("click", e => {
             this.firebase.auth().signOut()
         })
@@ -41,15 +39,11 @@ class FireBase {
         //pokaz formularz do rejestracji
         this.signIn.addEventListener("click", e => {
         
-                this.form.style.display = "block";
-  
-               
-         
-         
+            this.form.style.display = "block";
+
         });
 
         //zalogowanie uzytkownika
-      
         this.btnSendLog.addEventListener("click", e => {
             e.preventDefault();
             const passw = document.getElementById("password").value;

@@ -12,7 +12,6 @@ class MapSetup {
         this.list = header.querySelector("ul");
         this.countries = [];
         this.smallCountries = [];
-        this.mouse = null;
         this.countriesBox = [];
         this.attribute = "";
 
@@ -37,8 +36,7 @@ class MapSetup {
     }
 
     mousePosition(e){
-        window.onmousemove = this.mouse;
-        return this.mouse = function(e){
+        return window.onmousemove = function(e){
            return { x: e.clientX, y: e.clientY }
         }
     } 

@@ -8,7 +8,7 @@ class ToolTips extends MapSetup{
         this.tipsText = "";
 
 
-        this.tipsBtn.addEventListener("click",(e)=>{
+        this.tipsBtn.addEventListener("click", e =>{
             if(this.list.getAttribute("class") !== "tips"){
                 this.createTableTips()
             } else {

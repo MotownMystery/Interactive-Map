@@ -35,7 +35,7 @@ class Lists extends MapSetup{
            
     }
 
-    //         // dodanie do listy życzeń
+// dodanie do listy życzeń
     
 //          function saveDataToDB(item, user) {
 //             array.push(item);
@@ -48,7 +48,7 @@ class Lists extends MapSetup{
 //                 user: firebase.auth().currentUser.uid,
     
 //             })
-//         }
+//   }
        
 
 }

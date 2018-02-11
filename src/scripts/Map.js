@@ -6,18 +6,30 @@ class Map extends MapSetup {
         super();
         this.sectionSec = document.querySelector("#secondSec");
         this.leftBox = document.querySelector("#leftBox");
-        this.title.addEventListener("keyup", (e) =>{
+        this.title.addEventListener("keyup", e =>{
             if(e.keyCode === 13){
                 this.viewCountry(event);
+                this.turnOffSearchBtn();
             }
+
         })
-        this.btnSearch.addEventListener("click", () =>{this.viewCountry(event)} )
+
+        this.btnSearch.addEventListener("click", e =>{
+            this.viewCountry(event);
+            this.turnOffSearchBtn();
+        })
+
         this.exit = document.querySelector("#exitBtn");
-        this.exit.addEventListener("click", () => this.hideElement(this.sectionSec));
+        this.exit.addEventListener("click", () => {
+            this.hideElement(this.sectionSec);
+            location.reload();
+            this.turnOffSearchBtn();
+           
+        });
    
 
         [...this.countryMap].map(country => {
-            country.addEventListener("click", (e) => {
+            country.addEventListener("click", e => {
                 this.attribute = e.target.getAttribute("title");
                 e.preventDefault();
                 this.hideElement(this.list);
@@ -66,6 +78,14 @@ class Map extends MapSetup {
         this.selectCountries();
         this.showSection(this.sectionSec,'20%');
         super.viewCountry(event, this.countryMap, this.smallMap, this.title.value, this.attribute)        
+    }
+
+    turnOffSearchBtn(){
+        if(this.sectionSec.style.display !== "none"){
+            this.btnSearch.setAttribute("disabled", "true");
+        } else {
+            this.btnSearch.setAttribute("disabled", "false");
+        }
     }
 
 }
