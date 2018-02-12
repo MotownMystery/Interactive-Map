@@ -1,4 +1,4 @@
-
+//ogólne ustawienia strony
 class MapSetup {
     constructor(){
         this.countryMap = document.querySelector("#map").children;
@@ -36,25 +36,25 @@ class MapSetup {
             }    
         })
     }
-
+    // współrzędne myszki -> do wyświetlenie tooltip
     mousePosition(e){
-        return window.onmousemove = function(e){
-           return { x: e.clientX, y: e.clientY }
-        }
+                                    
+        return { x: e.clientX, y: e.clientY }
+           
     } 
     
-
+    // pokazanie danej sekcji
     showSection(section, positionTop){
         section.style.display = 'block';
         section.style.opacity = '1';
         section.style.top = positionTop;
     }
-
+    //schowanie danej sekcji
     hideElement(element){
         element.style.display = 'none';
     }
 
-
+    //połączenie z APi i porbanie danych wszystkich krajów
     selectCountries(){
        return fetch(`https://restcountries.eu/rest/v2/all`)
             .then(res => res.json())
@@ -66,14 +66,13 @@ class MapSetup {
             }).catch(error =>{return console.log('fail', error)})
 
     }
-
+    // podświetlenie mapy i pokazanie tooltip z nazwą
     blinkMap(countriesArray){
         [...countriesArray].forEach(country => {
             country.addEventListener("mouseenter",(e) =>{
-
                 e.target.classList.add("visibleCountry");
                 this.toolTip.innerText = country.getAttribute("title");
-                this.title.innerText = country.getAttribute("title");
+                this.title.value = country.getAttribute("title");
     
                 this.toolTip.style.display = "block";
                 this.toolTip.style.top = this.mousePosition(window.event).y + "px";
@@ -87,14 +86,14 @@ class MapSetup {
             })  
         })
     }
-
+    // funkcja tworzenie elementu listy
     addItemToList(parent, item){
         let newSpan = document.createElement("span");
         newSpan.classList.add("countryInfo");
         newSpan.innerText = item;
         parent.appendChild(newSpan);
     }
-    
+    // wskazanie danego kraju, wyświetlenie tablicy z informacjami, duża mapa i mała mapa
     viewCountry(e, countriesArrayOne, countriesArrayTwo, input, clickedCountry){
         [...countriesArrayOne].forEach(country => {
             let titleOfCountry = country.getAttribute("title");
@@ -109,7 +108,7 @@ class MapSetup {
             }  
         });
     }
-
+    // scrollowanie do danej sekcji
     scrollIt(element) {
         window.scrollTo({
             'behavior': 'smooth',

@@ -12,7 +12,6 @@ import {FireBase} from './FireBase'
     const map = new MapSetup() ;
     map.createArrayBigMap();
     map.createArraySmallMap()
-    map.mousePosition()
     map.selectCountries();
  
 
@@ -23,7 +22,8 @@ import {FireBase} from './FireBase'
 
 
     const toolTip = new ToolTips();
-    toolTip.showCountryFromTableTips()
+    // toolTip.showCountryFromTableTips()
+    console.log(toolTip)
 
 
     const weatherMap = new WeatherMap();

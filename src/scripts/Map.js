@@ -1,25 +1,23 @@
 import { MapSetup } from "./MapSetup";
 
+//duża mapa i mała mapa
 
 class Map extends MapSetup {
     constructor(){
         super();
-        this.sectionSec = document.querySelector("#secondSec");
+        this.sectionSec = document.querySelector("#secondSec");// sekcja z listą info nt krajów
         this.leftBox = document.querySelector("#leftBox");
-        this.title.addEventListener("keyup", e =>{
+        this.title.addEventListener("keyup", e =>{ // wyświetlenie informacji na etnter
             if(e.keyCode === 13){
-                this.viewCountry(event);
+                this.viewCountry(event, this.countryMap, this.smallMap, this.title.value, this.attribute);
                 this.turnOffSearchBtn();
             }
 
         })
-
-        if(this.sectionSec.style.display !== "none"){
-            this.title.addEventListener("input", ()=>{
-                // this.resetListElements(this.listSpans)
-            })
-        }
-
+        //wyświetlenie infromacji na click
+        this.btnSearch.addEventListener("click", (e)=>this.viewCountry(e)); 
+      
+        // wyjście z sekcji drugiej (lista) i przeładowanie strony
         this.exit = document.querySelector("#exitBtn");
         this.exit.addEventListener("click", () => {
             this.hideElement(this.sectionSec);
@@ -28,7 +26,7 @@ class Map extends MapSetup {
            
         });
    
-
+        // po kliknięciu na kraj na mapie wyświetlenie sekcji 2 z listą
         [...this.countryMap].map(country => {
             country.addEventListener("click", e => {
                 this.attribute = e.target.getAttribute("title");
@@ -36,19 +34,17 @@ class Map extends MapSetup {
                 this.hideElement(this.list);
                 this.selectCountries(this.attribute);
                 this.showSection(this.sectionSec,'5%');
-                this.viewCountry(event, this.countryMap, this.smallMap, this.title.value, this.attribute);
+                // this.viewCountry(event, this.countryMap, this.smallMap, this.title.value, this.attribute);
 
             })
         })
 
-
-
     }
-    
+    // podświetlenie kraju na mapie
     blinkMap(){
         super.blinkMap(this.countryMap);
     }
-
+    // dodanie infromacji o danym kraju
     selectCountries(attr){
         super.selectCountries();
             [...this.countriesBox].map(country => {
@@ -74,7 +70,7 @@ class Map extends MapSetup {
             })
 
     }
-
+    // schowanie tablicy tips, wyświetlenie sekcji 2, wyświetlenie informacji o kraju i podświetlenie na mapie
     viewCountry(e, countriesArrayOne, countriesArrayTwo, input, clickedCountry){
         e.preventDefault();
         this.hideElement(this.list);
@@ -82,7 +78,7 @@ class Map extends MapSetup {
         this.showSection(this.sectionSec,'5%');
         super.viewCountry(event, this.countryMap, this.smallMap, this.title.value, this.attribute)        
     }
-
+    // ustawienie guzika search
     turnOffSearchBtn(){
         if(this.sectionSec.style.display !== "none"){
             this.btnSearch.setAttribute("disabled", "true");
@@ -91,12 +87,7 @@ class Map extends MapSetup {
         }
     }
 
-    resetListElements(element){
-        [...element].forEach(el=>{
-            el.innerText = " "
-        })
 
-    }
 }
 
 export { Map };

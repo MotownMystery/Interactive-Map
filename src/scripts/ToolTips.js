@@ -3,24 +3,22 @@ import { MapSetup } from "./MapSetup";
 class ToolTips extends MapSetup{
     constructor(){
         super();
+        this.tipsText = "";
         this.arrayOfLi = [];
         this.tipsBtn = document.querySelector("#tipBtn");
-        this.tipsText = "";
-
-
+        // po kliknięciu na btn serach pokazanie listy z nazwami krajów
         this.tipsBtn.addEventListener("click", e =>{
             if(this.list.getAttribute("class") !== "tips"){
                 this.createTableTips()
             } else {
                 this.hideElement(this.list);
-                e.target.setAttribute("disabled", "true");
-            }
-            
+                // e.target.setAttribute("disabled", "true");
+            } 
         });
-
     }
+    // stworzenie tablicy z nazwami krajów
     createTableTips(){
-        this.list.classList.add("tips");
+        this.list.classList.toggle("tips");
         [...this.countryMap].map(el => {
             this.attribute = el.getAttribute("title")
             let newLi = document.createElement("li");
@@ -28,12 +26,15 @@ class ToolTips extends MapSetup{
             this.list.appendChild(newLi);
             newLi.innerText = this.attribute;
             header.appendChild(this.list); 
+
             this.arrayOfLi.push(newLi);
-         
-        })
+            this.showCountryFromTableTips(this.arrayOfLi)
+
+        });
     }
-    showCountryFromTableTips(){
-        [...this.arrayOfLi].forEach(tip =>{
+    // pokazanie kraju wybranego z tablicy Tips
+    showCountryFromTableTips(arrayOfLi){
+        [...arrayOfLi].forEach(tip =>{
             tip.addEventListener("click",(e) =>{
                 this.tipsText = e.target.innerText;
                 this.title.value = this.tipsText;

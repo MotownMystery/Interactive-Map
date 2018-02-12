@@ -21,13 +21,14 @@ class WeatherMap extends MapSetup{
             });
 
     }
+    //dodanie elementu do listy weather
     addItemToWeatherList(parent, item, text){
         let li = document.createElement("li");
         li.innerText = text + item;
         li.classList.add("elRightList");
         parent.appendChild(li);   
     }
-
+    //połączenie z API weather i dodanie elementów do listy
     showWeather(){
         super.selectCountries();
         [...this.countriesBox].map(country => {
