@@ -6,24 +6,24 @@ class Lists extends MapSetup{
         this.listSection = document.querySelector(".list__box");
         this.visitedList = document.querySelector("#listVisited");
         this.wishList = document.querySelector("#listWish");
-        this.visitBtn = document.querySelector("#addToVisit");
-        this.addVisitedBtn = this.visitBtn.previousElementSibling;
+        this.toVisitBtn = document.querySelector("#addToVisit");
+        this.addVisitedBtn = this.toVisitBtn.previousElementSibling;
         this.btnListExit = document.querySelector("#exitList");
- 
-      
-
         this.btnListExit.addEventListener("click", () => this.hideElement(this.listSection));
 
-        this.visitBtn.addEventListener("click", ()=>{
+        this.toVisitBtn.addEventListener("click", ()=>{
             this.showSection(this.listSection, '120%');
             this.scrollIt(this.listSection);
             this.swichListItem(this.wishList);
+            this.viewCountry(event, this.countryMap, this.smallMap, this.title.value, this.attribute, 'notVisited')
+            
         });
 
         this.addVisitedBtn.addEventListener("click", ()=>{
             this.showSection(this.listSection, '120%');
             this.scrollIt(this.listSection);
             this.swichListItem(this.visitedList);
+            this.viewCountry(event, this.countryMap, this.smallMap, this.title.value, this.attribute, 'visited')
         })
     }
 
@@ -34,6 +34,7 @@ class Lists extends MapSetup{
         // saveDataToDB(country);
            
     }
+
 
 // dodanie do listy życzeń
     

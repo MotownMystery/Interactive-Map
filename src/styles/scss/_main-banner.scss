@@ -50,6 +50,7 @@
     height: 750px;
     transform: scale(0.3);
     margin-top: 110px;
+    cursor: pointer;
 }
 
 .second-page__box__map {
@@ -115,7 +116,8 @@ svg g {
 }
 
 .tips {
-    width: 1000px;
+    max-width: 1000px;
+    width: 100%;
     padding: 10px;
     margin-top: 80px;
     background: #fff;

@@ -51,7 +51,12 @@ body {
     align-items: center;
     flex-direction: column;
     height: 750px;
-
+    .btn:nth-child(3) {
+        background-color: rgb(230, 203, 51);
+    }
+    .btn:nth-child(4) {
+        background-color: black;
+    }
   
 
 }
@@ -73,13 +78,8 @@ body {
     position: absolute;
     top: 90%;
     left: 20%;
-    opacity: 0;
     text-align: left;
-    display: none;
-    // display: flex;
-    // flex-direction: column;
-    // justify-content: center;
-    // align-items: center;
+
 }
 
 .second-page__list--right {

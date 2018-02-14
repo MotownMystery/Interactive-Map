@@ -9,13 +9,16 @@ class MapSetup {
         this.title = document.querySelector("#countryName");
         this.toolTip = document.querySelector("#toolTip");
         this.header = document.querySelector("#header");
-        this.button = document.querySelector(".btnAdd");
+        this.btnWeather = document.querySelector(".btnAdd");
+        this.boxWeather = document.querySelector("#weatherBox");
         this.btnSearch = document.querySelector("#btn");
         this.list = header.querySelector("ul");
         this.countries = [];
         this.smallCountries = [];
         this.countriesBox = [];
         this.attribute = "";
+        this.capital = "";
+
 
     }
 
@@ -37,10 +40,8 @@ class MapSetup {
         })
     }
     // współrzędne myszki -> do wyświetlenie tooltip
-    mousePosition(e){
-                                    
+    mousePosition(e){                      
         return { x: e.clientX, y: e.clientY }
-           
     } 
     
     // pokazanie danej sekcji
@@ -56,36 +57,25 @@ class MapSetup {
 
     //połączenie z APi i porbanie danych wszystkich krajów
     selectCountries(){
-       return fetch(`https://restcountries.eu/rest/v2/all`)
+        fetch(`https://restcountries.eu/rest/v2/all`)
             .then(res => res.json())
             .then(data => {
-                data.map(item =>{
-                this.countriesBox.push(item);
-                return  this.countriesBox;
-            })
+               this.countriesBox = data;
             }).catch(error =>{return console.log('fail', error)})
 
     }
-    // podświetlenie mapy i pokazanie tooltip z nazwą
-    blinkMap(countriesArray){
-        [...countriesArray].forEach(country => {
-            country.addEventListener("mouseenter",(e) =>{
-                e.target.classList.add("visibleCountry");
-                this.toolTip.innerText = country.getAttribute("title");
-                this.title.value = country.getAttribute("title");
     
-                this.toolTip.style.display = "block";
-                this.toolTip.style.top = this.mousePosition(window.event).y + "px";
-                this.toolTip.style.transform = "translate(0,100%)";
-                this.toolTip.style.left = this.mousePosition(window.event).x + "px";
-            })
-            country.addEventListener("mouseleave",(e) =>{
-                e.target.classList.remove("visibleCountry");
-                this.toolTip.style.display = "none";
-                
-            })  
+    getCapital(){
+        this.selectCountries();
+        [...this.countriesBox].map(country =>{
+            if(this.title.value === country.name){
+                 this.capital = country.capital
+            }
         })
     }
+
+
+
     // funkcja tworzenie elementu listy
     addItemToList(parent, item){
         let newSpan = document.createElement("span");
@@ -93,21 +83,24 @@ class MapSetup {
         newSpan.innerText = item;
         parent.appendChild(newSpan);
     }
+
     // wskazanie danego kraju, wyświetlenie tablicy z informacjami, duża mapa i mała mapa
-    viewCountry(e, countriesArrayOne, countriesArrayTwo, input, clickedCountry){
+    viewCountry(e, countriesArrayOne, countriesArrayTwo, input, clickedCountry, countryClass){
         [...countriesArrayOne].forEach(country => {
             let titleOfCountry = country.getAttribute("title");
             if(titleOfCountry === input || titleOfCountry === clickedCountry){
-                country.classList.add("visibleCountry"); 
-            }  
+                country.classList.toggle("visibleCountry"); 
+            };
         });
         [...countriesArrayTwo].forEach(country => {
-            let titleOfCountry = country.getAttribute("title");
-            if(titleOfCountry === input || titleOfCountry === clickedCountry){
-                country.classList.add("visibleCountry"); 
-            }  
-        });
+                let titleOfCountry = country.getAttribute("title");
+                if(titleOfCountry === input || titleOfCountry === clickedCountry){
+                    country.classList.add(countryClass); 
+                }
+            });
+    
     }
+
     // scrollowanie do danej sekcji
     scrollIt(element) {
         window.scrollTo({

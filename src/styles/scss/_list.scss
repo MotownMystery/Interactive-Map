@@ -33,5 +33,15 @@
 }
 
 .countryInfo {
-    display: inline;
+    display: inline-block;
+}
+
+.visited{
+    color: rgb(230, 203, 51);
+    fill: currentColor;
+}
+
+.notVisited{
+    color: black;
+    fill: currentColor;
 }
