@@ -8,7 +8,6 @@ class ToolTips extends MapSetup{
         this.tipsBtn = document.querySelector("#tipBtn");
         // po kliknięciu na btn serach pokazanie listy z nazwami krajów
         this.tipsBtn.addEventListener("click", e =>{
-            this.list.classList.add("visible");
             if(this.list.style.display === "block"){
                 this.createTableTips();
                 this.list.classList.add("hide");
@@ -20,7 +19,7 @@ class ToolTips extends MapSetup{
     }
     // stworzenie tablicy z nazwami krajów
     createTableTips(){
-        this.list.classList.remove("tips");
+        this.list.classList.add("visible");
         [...this.countryMap].map(el => {
             this.attribute = el.getAttribute("title")
             let newLi = document.createElement("li");

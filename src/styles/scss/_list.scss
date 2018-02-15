@@ -4,6 +4,9 @@
     align-items: center;
 }
 
+.row{
+    margin: 0 auto;
+}
 
 .list__box {
     display: none;
@@ -20,6 +23,11 @@
 
 .list__box__title {
     text-transform: uppercase;
+    text-align: center;
+    border-bottom: 1px solid black;
+    margin: 20px;
+    padding: 10px;
+
 }
 .list__box--visited,
 .list__box--wish {
@@ -34,6 +42,7 @@
 
 .countryInfo {
     display: inline-block;
+    margin: 10px 0;
 }
 
 .visited{
@@ -44,4 +53,9 @@
 .notVisited{
     color: black;
     fill: currentColor;
+}
+
+.fas.fa-check{
+    margin-right: 10px;
+    color: green;
 }
