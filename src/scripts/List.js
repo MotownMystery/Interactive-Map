@@ -9,15 +9,16 @@ class Lists extends MapSetup{
         this.toVisitBtn = document.querySelector("#addToVisit");
         this.addVisitedBtn = this.toVisitBtn.previousElementSibling;
         this.btnListExit = document.querySelector("#exitList");
-        this.icon = '<i class="fas fa-check fa-2x"></i>';
+        this.iconCheck = '<i class="fas fa-check fa-2x"></i>';
         this.btnListExit.addEventListener("click", () => this.hideElement(this.listSection));
 
         this.toVisitBtn.addEventListener("click", ()=>{
             this.showSection(this.listSection, '120%');
             this.scrollIt(this.listSection);
-            this.swichListItem(this.wishList, this.icon);
+            this.swichListItem(this.wishList, this.iconCheck);
             this.viewCountry(event, this.countryMap, this.smallMap, this.title.value, this.attribute, 'notVisited');
             this.changeList();
+            this.deleteItem();
             
         });
 
@@ -26,6 +27,7 @@ class Lists extends MapSetup{
             this.scrollIt(this.listSection);
             this.swichListItem(this.visitedList, " ");
             this.viewCountry(event, this.countryMap, this.smallMap, this.title.value, this.attribute, 'visited');
+            this.deleteItem();
       
         });
 
@@ -33,24 +35,34 @@ class Lists extends MapSetup{
     }
 
     swichListItem(parent, icon){
-        let country = this.listEl[0].innerText;
-       
+        let country = this.listEl[0].innerHTML;
         this.addItemToList(parent, country, icon);
-  
-
         // saveDataToDB(country);  
     }
     // zmienić funkcję tak, żeby dodawała nowy element!
     changeList(){
-        const icons = this.listSection.querySelectorAll('span');
+        const icons = this.listSection.querySelectorAll('li .fa-check');
         [...icons].forEach( icon=>{
             icon.addEventListener("click", (e)=>{
                 let element = e.target.parentElement.innerText;
-                this.visitedList.innerHTML = element;
+                this.addItemToList(this.visitedList, element," ")
                 e.target.parentElement.innerHTML = " ";
             })
         })
     }
+
+    deleteItem(){
+        const deleteIcons = document.querySelectorAll("li .fa-times-circle");
+        [...deleteIcons].forEach(icon=>{
+            icon.addEventListener("click", (e)=>{
+                console.log(e.target)
+                e.target.parentElement.innerHTML = " ";
+            })
+        })
+
+    }
+
+
 
 
 // dodanie do listy życzeń

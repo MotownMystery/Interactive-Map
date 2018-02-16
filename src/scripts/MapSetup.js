@@ -78,11 +78,10 @@ class MapSetup {
 
     // funkcja tworzenie elementu listy
     addItemToList(parent, item, icon){
-        let newSpan = document.createElement("span");
-        newSpan.classList.add("countryInfo");
-        parent.appendChild(newSpan);
-        newSpan.innerHTML= icon + item;
-       
+        let newLi = document.createElement("li");
+        newLi.classList.add("countryInfo");
+        newLi.innerHTML = icon + '<i class="far fa-times-circle fa-2x"></i>' +item;
+        parent.appendChild(newLi);
     }
 
     // wskazanie danego kraju, wyświetlenie tablicy z informacjami, duża mapa i mała mapa

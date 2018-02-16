@@ -19,6 +19,7 @@
     opacity: 0;
     transition: 1s all; 
     margin-bottom: 30px;
+   
 }
 
 .list__box__title {
@@ -31,7 +32,9 @@
 }
 .list__box--visited,
 .list__box--wish {
-  
+  margin: 10px;
+  list-style: none;
+
 }
 
 .second-page__box--exit{
@@ -41,7 +44,6 @@
 }
 
 .countryInfo {
-    display: inline-block;
     margin: 10px 0;
 }
 
@@ -58,4 +60,9 @@
 .fas.fa-check{
     margin-right: 10px;
     color: green;
+}
+
+.fa-times-circle {
+    margin-right: 10px;
+    color: red;
 }

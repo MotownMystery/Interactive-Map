@@ -27,6 +27,7 @@ import {FireBase} from './FireBase'
 
     const myList = new Lists();
     myList.changeList();
+    myList.deleteItem();
     console.log(myList)
     const fireBase = new FireBase();
     fireBase.newUserSign();
