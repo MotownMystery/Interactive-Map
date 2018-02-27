@@ -9,11 +9,11 @@ What you can do with an Interactive-Map:
 - find the current time in the capital city
 - add the choosen country to your "Whish list" or "Visited list"
 
+Click the link to see the result: https://newgirll.github.io/Interactive-Map/
+
 This project is still on progress, my goal is to:
 - make the website responsive, 
-- allow to log in, 
-- save data (whish list, visited list) 
-
+- allow to log in(firebase)
 
 Technology used in the project:
 

@@ -8,18 +8,19 @@ class ToolTips extends MapSetup{
         this.tipsBtn = document.querySelector("#tipBtn");
         // po kliknięciu na btn serach pokazanie listy z nazwami krajów
         this.tipsBtn.addEventListener("click", e =>{
-            if(this.list.style.display === "block"){
+            this.list.classList.add("visible");
+            if(this.list.className === "visible"){
                 this.createTableTips();
-                this.list.classList.add("hide");
+                this.list.classList.remove("visible")
             } else {
-                this.hideElement(this.list);
-                // e.target.setAttribute("disabled", "true");
-            } 
+                this.hideElement(this.list)
+            }
+
         });
     }
     // stworzenie tablicy z nazwami krajów
     createTableTips(){
-        this.list.classList.add("visible");
+        this.list.classList.add("tips");
         [...this.countryMap].map(el => {
             this.attribute = el.getAttribute("title")
             let newLi = document.createElement("li");

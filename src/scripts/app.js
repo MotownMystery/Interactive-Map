@@ -23,12 +23,11 @@ import {FireBase} from './FireBase'
 
 
     const toolTip = new ToolTips();
-
+    
 
     const myList = new Lists();
     myList.changeList();
     myList.deleteItem();
-    console.log(myList)
     const fireBase = new FireBase();
     fireBase.newUserSign();
 

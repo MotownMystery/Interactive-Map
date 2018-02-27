@@ -55,7 +55,6 @@ class Lists extends MapSetup{
         const deleteIcons = document.querySelectorAll("li .fa-times-circle");
         [...deleteIcons].forEach(icon=>{
             icon.addEventListener("click", (e)=>{
-                console.log(e.target)
                 e.target.parentElement.innerHTML = " ";
             })
         })
